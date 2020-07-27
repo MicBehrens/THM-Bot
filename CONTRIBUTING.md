@@ -73,7 +73,7 @@ should be included in the bot command.
 - There is a test server that you can join and invite your bots on, we will provide you with the "config.json" file needed for the instance to work on the server. Also the bot's permissions are the same as on the official server.
 
 ### Permissions
-- If any aditionnal permission is required, contact a dev lead before coding anything so that a decision can be taken.
+- If any additional permission is required, contact a dev lead before coding anything so that a decision can be taken.
 - If you abuse or try to abuse of the bot permissions on the official or test server, there will be consequences.
 
 

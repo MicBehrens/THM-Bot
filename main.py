@@ -37,7 +37,7 @@ if __name__ == "__main__":
     # Removes default help command.
     bot.remove_command("help")
 
-    # Logging the unlodead cogs.
+    # Logging the disabled cogs.
     if len(c_disabled_extensions) != 0:
         print("\nFollowing cogs are disabled:")
         for extension in c_disabled_extensions:
@@ -57,7 +57,7 @@ if __name__ == "__main__":
 # Logging the starting of the bot into the console.
 @bot.event
 async def on_ready():
-    # Sets activity message.
+    # Sets activity message.
     if s_status != "":
         await bot.change_presence(activity=discord.Game(s_status))
 

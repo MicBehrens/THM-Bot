@@ -17,6 +17,5 @@ venv/
 .vscode/
 .idea/
 
-
 # Github stuff
 .github/

@@ -72,13 +72,10 @@ def __check_context__(ctx, context):
 def __check_channel__(ctx, channels):
     """Checks that the command is executed in one of the allowed channel."""
 
-    is_channel_allowed = False
-
     for c in channels:
         if c == ctx.channel.id:
-            __check_channel__ = True
-
-    if not __check_channel__:
+            break
+    else:
         raise Exception(s_cmd["channel_not_allowed"])
 
 def __check_sanitized__(args):
@@ -96,14 +93,12 @@ def __check_roles__(ctx, roles):
     """Checks that the user has all the required roles."""
 
     user = ctx.author
-    has_perm = False
 
     # We want to know if the user has specific roles.
     for role in roles:
         if __has_role__(user, role):
-            has_perm = True
-
-    if not has_perm:
+            break
+    else:
         raise Exception(s_cmd["no_perm"])
 
 
@@ -118,15 +113,15 @@ async def command(ctx, args=None, roles=None, channels=None, context=Context.BOT
         return False
 
     # Checking for the channel in case of a public context.
-    if channels != None and context == Context.PUBLIC:
+    if channels is not None and context == Context.PUBLIC:
         try:
-            __check_channel__(__check_channel__(ctx, channels))
+            __check_channel__(ctx, channels)
         except Exception as e:
             await ctx.send(e)
             return False
 
     # Checking if all the args are sanitized.
-    if args != None:
+    if args is not None:
         try:
             __check_sanitized__(args)
         except Exception as e:
@@ -134,7 +129,7 @@ async def command(ctx, args=None, roles=None, channels=None, context=Context.BOT
             return False
 
     # Checking if the user has permission.
-    if roles != None:
+    if roles is not None:
         try:
             __check_roles__(ctx, roles)
         except Exception as e:

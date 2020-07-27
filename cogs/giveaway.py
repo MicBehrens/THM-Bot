@@ -40,7 +40,7 @@ def clear_file():
     data = json.loads(file)
 
     # If there is existing data.
-    if not "no_giveaway" in data:
+    if "no_giveaway" not in data:
         # Saves message ID.
         ret = data["message_id"]
 
@@ -78,7 +78,8 @@ class Giveaway(commands.Cog):
 
         # Sends results.
         try:
-            gResult = (await self.chan_announcement.fetch_message(gMessageId)).reactions[0]
+            chan_announcement = self.bot.get_channel(id_announcements)
+            gResult = (await chan_announcement.fetch_message(gMessageId)).reactions[0]
 
             embed = officialEmbed("Giveaway results", gDesc)
 
@@ -92,7 +93,7 @@ class Giveaway(commands.Cog):
             embed.add_field(name=s_giveaway["announce_field_title"],
                             value=s_giveaway["announce_field_value"].format(winner.mention))
 
-            await self.chan_announcement.send(embed=embed)
+            await chan_announcement.send(embed=embed)
         except:
             print(s_giveaway["canceled"])
 
@@ -263,7 +264,7 @@ class Giveaway(commands.Cog):
         if has_role(ctx.author, id_admin):
             giveaway_id = clear_file()
 
-            if giveaway_id != None:
+            if giveaway_id is not None:
                 chan_announcement = self.bot.get_channel(id_announcements)
                 giveaway_msg = (await chan_announcement.fetch_message(giveaway_id))
                 await giveaway_msg.delete()

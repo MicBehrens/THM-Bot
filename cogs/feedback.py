@@ -53,7 +53,7 @@ class Feedback(commands.Cog, name="Provide Feedback"):
     def __init__(self, bot):
         self.bot = bot
 
-# Use help_desc from config.json for commmand description in !help
+# Use help_desc from config.json for command description in !help
     @commands.command(name="feedback", description=s_feedback["help_desc"])
     async def feedback(self, ctx):
         response = getEmbedFeedback(s_feedback_title, c_feedback_picture, c_feedback_color)

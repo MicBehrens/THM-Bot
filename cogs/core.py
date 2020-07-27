@@ -32,7 +32,7 @@ class Core(commands.Cog, name="Core Commands"):
         # Uptime command.
         @bot.command(description="Returns the uptime of the bot.")
         async def uptime(ctx):
-            # Gets the time and substracts it to the current time.
+            # Gets the time and subtracts it to the current time.
             current_time = time.time()
             difference = int(round(current_time - start_time))
             text = str(datetime.timedelta(seconds=difference))

@@ -102,7 +102,7 @@
         "userrank":{
             "help_desc":"Get a THM member's rank.",
             "user_not_found":"**Error: User not found!**",
-            "error":"**An error has occured.**"
+            "error":"**An error has occurred.**"
         },
         "leaderboard":{
             "help_desc":"Prints the leaderboard.",

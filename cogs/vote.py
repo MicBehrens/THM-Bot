@@ -105,7 +105,7 @@ class Vote(commands.Cog):
 
         # Check for the user to be admin.
         if not has_role(ctx.author, id_admin):
-            botMsg = await ctx.send(config.get_string("no_perm"))
+            botMsg = await ctx.send(config.get_string("commands")["no_perm"])
             await asyncio.sleep(5)
             await botMsg.delete()
             return
@@ -287,7 +287,7 @@ class Vote(commands.Cog):
         if has_role(ctx.author, id_admin):
             vote_id = clear_file()
 
-            if vote_id != None:
+            if vote_id is not None:
                 chan_announcement = self.bot.get_channel(id_announcements)
                 vote_msg = (await chan_announcement.fetch_message(vote_id))
                 await vote_msg.delete()
